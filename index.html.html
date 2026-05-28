@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Direito Processual Penal — Guia de Prova</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#ffffff;--bg2:#f5f5f0;--bg3:#ebebeb;
+  --text:#1a1a1a;--text2:#555;--text3:#888;
+  --border:#ddd;--border2:#bbb;
+  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-text:#0C447C;
+  --red:#A32D2D;--red-bg:#FCEBEB;--red-text:#791F1F;
+  --green:#3B6D11;--green-bg:#EAF3DE;--green-text:#27500A;
+  --amber:#854F0B;--amber-bg:#FAEEDA;--amber-text:#633806;
+  --purple:#534AB7;--purple-bg:#EEEDFE;--purple-text:#3C3489;
+  --radius:10px;--radius-sm:6px;
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;
+    --text:#f0f0f0;--text2:#ababab;--text3:#777;
+    --border:#444;--border2:#666;
+    --blue:#4a9de0;--blue-bg:#0d2d4a;--blue-text:#90c8f5;
+    --red:#d06060;--red-bg:#3a1515;--red-text:#f5a0a0;
+    --green:#7ab648;--green-bg:#1a2e0a;--green-text:#a8d878;
+    --amber:#e0a030;--amber-bg:#2e1e04;--amber-text:#f5c878;
+    --purple:#9088e0;--purple-bg:#1e1a3a;--purple-text:#c0b8f5;
+  }
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh}
+.header{background:var(--blue);color:#fff;padding:16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.header h1{font-size:17px;font-weight:600;margin-bottom:2px}
+.header p{font-size:12px;opacity:.85}
+.search-wrap{padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.search-bar{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--border2);border-radius:20px;padding:8px 14px}
+.search-bar input{border:none;background:transparent;outline:none;font-size:14px;color:var(--text);flex:1;font-family:inherit}
+.search-bar svg{flex-shrink:0;opacity:.5}
+.tabs-scroll{overflow-x:auto;display:flex;gap:6px;padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--border);scrollbar-width:none}
+.tabs-scroll::-webkit-scrollbar{display:none}
+.tab{white-space:nowrap;padding:7px 14px;border-radius:20px;border:1px solid var(--border2);font-size:13px;cursor:pointer;background:var(--bg);color:var(--text2);transition:all .15s;font-family:inherit;flex-shrink:0}
+.tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.content{padding:12px 16px;max-width:680px;margin:0 auto}
+.section{display:none}
+.section.active{display:block}
+.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;gap:10px;-webkit-tap-highlight-color:transparent}
+.card-header:active{background:var(--bg2)}
+.card-title{font-size:14px;font-weight:600;display:flex;align-items:flex-start;gap:8px;flex:1}
+.card-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;white-space:nowrap;flex-shrink:0}
+.badge-blue{background:var(--blue-bg);color:var(--blue-text)}
+.badge-red{background:var(--red-bg);color:var(--red-text)}
+.badge-amber{background:var(--amber-bg);color:var(--amber-text)}
+.chevron{font-size:18px;color:var(--text3);transition:transform .2s;flex-shrink:0}
+.chevron.open{transform:rotate(180deg)}
+.card-body{display:none;padding:14px 16px;border-top:1px solid var(--border);background:var(--bg2)}
+.card-body.open{display:block}
+.block{margin-bottom:14px}
+.block:last-child{margin-bottom:0}
+.block-title{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.prose{font-size:14px;line-height:1.7;color:var(--text)}
+.hl{border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;margin:8px 0;border-left:3px solid}
+.hl-blue{background:var(--blue-bg);color:var(--blue-text);border-color:var(--blue)}
+.hl-red{background:var(--red-bg);color:var(--red-text);border-color:var(--red)}
+.hl-green{background:var(--green-bg);color:var(--green-text);border-color:var(--green)}
+.hl-amber{background:var(--amber-bg);color:var(--amber-text);border-color:var(--amber)}
+.hl-purple{background:var(--purple-bg);color:var(--purple-text);border-color:var(--purple)}
+.hl strong{font-weight:700}
+.list{list-style:none;padding:0}
+.list li{font-size:13px;padding:5px 0;padding-left:14px;position:relative;line-height:1.5;border-bottom:1px solid var(--border)}
+.list li:last-child{border-bottom:none}
+.list li::before{content:"›";position:absolute;left:0;color:var(--blue);font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.mini{padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);font-size:13px}
+.mini .lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.cmp-ok{background:var(--green-bg);color:var(--green-text);border-color:var(--green);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;margin-bottom:6px}
+.cmp-no{background:var(--red-bg);color:var(--red-text);border-color:var(--red);border-radius:var(--radius-sm);padding:10px 12px;font-size:13px;margin-bottom:6px}
+.cmp-ok .lbl,.cmp-no .lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;opacity:.7}
+.macete{background:var(--bg3);border-radius:var(--radius-sm);padding:12px 14px;font-size:13px;margin:8px 0;font-family:monospace;line-height:1.8;color:var(--text);white-space:pre-wrap}
+table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+th{text-align:left;padding:7px 8px;font-weight:600;color:var(--text2);border-bottom:2px solid var(--border2);background:var(--bg);font-size:11px;text-transform:uppercase}
+td{padding:7px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.compare-cards{gap:8px;margin:8px 0}
+.compare-card-full{border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px;margin-bottom:8px;background:var(--bg)}
+.compare-card-full .lbl{font-size:11px;font-weight:700;margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.duo-red{border:2px solid var(--red);border-radius:var(--radius-sm);padding:12px;background:var(--red-bg);color:var(--red-text)}
+.duo-green{border:2px solid var(--green);border-radius:var(--radius-sm);padding:12px;background:var(--green-bg);color:var(--green-text)}
+.duo .lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;opacity:.7}
+.duo .list li{color:inherit;border-color:rgba(0,0,0,.1);font-size:12px}
+.duo .list li::before{color:inherit}
+.no-results{color:var(--text2);font-size:14px;padding:24px 0;text-align:center}
+@media(max-width:400px){
+  .grid2{grid-template-columns:1fr}
+  .duo{grid-template-columns:1fr}
+  table{font-size:11px}
+  td,th{padding:5px 6px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 Direito Processual Penal</h1>
+  <p>Guia completo para prova — toque nos cards para expandir</p>
+</div>
+
+<div class="search-wrap">
+  <div class="search-bar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="text" id="searchInput" placeholder="Buscar (ex: flagrante, fiança, nulidade…)" oninput="filterCards(this.value)">
+  </div>
+</div>
+
+<div class="tabs-scroll" id="tabsBar">
+  <button class="tab active" onclick="setTab('prisao',this)">🔒 Prisão</button>
+  <button class="tab" onclick="setTab('flagrante',this)">⚠️ Flagrante</button>
+  <button class="tab" onclick="setTab('preventiva',this)">🛡️ Preventiva</button>
+  <button class="tab" onclick="setTab('temporaria',this)">⏱️ Temporária</button>
+  <button class="tab" onclick="setTab('fianca',this)">💰 Fiança</button>
+  <button class="tab" onclick="setTab('citacao',this)">📬 Citação</button>
+  <button class="tab" onclick="setTab('nulidades',this)">⚖️ Nulidades</button>
+  <button class="tab" onclick="setTab('recursos',this)">↑ Recursos</button>
+  <button class="tab" onclick="setTab('juri',this)">🔨 Júri</button>
+  <button class="tab" onclick="setTab('sentenca',this)">📄 Sentença</button>
+</div>
+
+<div class="content">
+<div id="searchResults" style="display:none"></div>
+
+<!-- ====== PRISÃO ====== -->
+<div id="section-prisao" class="section active">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🔒</span><span>Conceito e espécies de prisão <span class="badge badge-blue">Art. 283 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <div class="block-title">O que é prisão?</div>
+        <div class="prose">Prisão é a privação da liberdade de locomoção de uma pessoa, que só pode ocorrer de duas formas: por <strong>ordem escrita e fundamentada</strong> de autoridade judiciária competente, ou em situação de <strong>flagrante delito</strong>. Qualquer prisão fora dessas hipóteses é ilegal e deve ser relaxada.</div>
+      </div>
+      <div class="hl hl-purple"><strong>Art. 283 CPP:</strong> ninguém será preso senão em flagrante delito ou por ordem escrita e fundamentada da autoridade judiciária competente, em decorrência de sentença condenatória transitada em julgado ou, no curso da investigação ou do processo, em virtude de prisão temporária ou prisão preventiva.</div>
+      <div class="block">
+        <div class="block-title">As 4 espécies de prisão</div>
+        <div class="grid2">
+          <div class="mini"><div class="lbl">Penal</div>Decorre de sentença condenatória transitada em julgado. O réu já foi definitivamente condenado e esgotou todos os recursos possíveis.</div>
+          <div class="mini"><div class="lbl">Processual / Cautelar</div>Ocorre antes do trânsito em julgado. Finalidade: proteger a investigação, o processo, evitar fuga ou novos crimes. Exemplos: temporária e preventiva.</div>
+          <div class="mini"><div class="lbl">Civil</div>Única prisão civil admitida pela CF/88: devedor de alimentos. Súmula Vinculante 25 STF proíbe prisão do depositário infiel.</div>
+          <div class="mini"><div class="lbl">Disciplinar</div>Aplicada a militares por transgressões disciplinares ou crimes militares (art. 5º, LXI, CF). Decretada pela hierarquia militar.</div>
+        </div>
+      </div>
+      <div class="hl hl-red"><strong>Pegadinha:</strong> Prisão civil só existe para devedor de alimentos. Se a questão mencionar "depositário infiel" = ILEGAL (SV 25 STF).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📋</span><span>Mandado de prisão <span class="badge badge-blue">Requisitos</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">O mandado de prisão é o instrumento formal que materializa a ordem judicial. Deve conter obrigatoriamente:</div>
+      <ul class="list">
+        <li>Nome completo do réu (ou descrição que permita sua identificação)</li>
+        <li>Infração penal que motiva a prisão</li>
+        <li>Valor da fiança, quando cabível</li>
+        <li>Assinatura da autoridade que o expediu</li>
+        <li>Fundamentação (CF exige ordem escrita e fundamentada)</li>
+      </ul>
+      <div class="hl hl-red" style="margin-top:10px"><strong>Pegadinha:</strong> Mandado sem assinatura ou com identificação errada do réu gera nulidade. Erro de digitação irrelevante (sem gerar confusão) não é nulidade — aplica-se a instrumentalidade das formas.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🏠</span><span>Prisão domiciliar e especial <span class="badge badge-amber">Art. 317-318 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <div class="block-title">Prisão domiciliar — hipóteses (art. 318 CPP)</div>
+        <ul class="list">
+          <li>Maior de 80 anos</li>
+          <li>Portador de doença grave</li>
+          <li>Gestante (a partir da gestação)</li>
+          <li>Mulher com filho até 12 anos incompletos</li>
+          <li>Homem, quando único responsável pelos cuidados do filho até 12 anos</li>
+          <li>Pessoa com deficiência grave</li>
+        </ul>
+        <div class="hl hl-amber" style="margin-top:8px"><strong>STJ/STF:</strong> Gestante em prisão preventiva tem direito à domiciliar, salvo se o crime envolver violência ou grave ameaça, ou se a domiciliar for inadequada ao caso.</div>
+      </div>
+      <div class="block">
+        <div class="block-title">Prisão especial — separação, não liberdade</div>
+        <div class="prose">O preso especial apenas fica separado dos presos comuns. Não significa sair da prisão. Têm direito: magistrados, promotores, advogados, diplomados em curso superior, ministros, parlamentares, militares, delegados etc. (art. 295 CPP).</div>
+        <div class="hl hl-red"><strong>Pegadinha:</strong> Prisão especial = separação física apenas. Não é benefício que permita sair da prisão ou cumprir pena em casa.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== FLAGRANTE ====== -->
+<div id="section-flagrante" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">⚡</span><span>Espécies de flagrante <span class="badge badge-red">MUITO COBRADO</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:10px">O flagrante é a situação em que a pessoa é surpreendida no momento do crime ou em circunstâncias que indicam que o crime acabou de ocorrer. O art. 302 CPP traz as hipóteses legais.</div>
+
+      <div class="compare-card-full">
+        <div class="lbl" style="color:var(--blue-text)">✔ Próprio (art. 302, I e II)</div>
+        <div class="prose" style="font-size:13px">Pessoa está cometendo o crime ou <strong>acabou de cometê-lo</strong>. O agente é pego na ação ou segundos após. Ex: preso saindo da loja com mercadoria furtada.</div>
+      </div>
+
+      <div class="compare-card-full">
+        <div class="lbl" style="color:var(--blue-text)">✔ Impróprio / Quase flagrante (art. 302, III)</div>
+        <div class="prose" style="font-size:13px">Há <strong>perseguição ininterrupta</strong> logo após o crime. Não há prazo fixo em lei — o que importa é que a perseguição seja contínua, sem interrupção. Ex: ladrão que foge e é perseguido por vários quarteirões.</div>
+        <div class="hl hl-amber" style="margin-top:6px"><strong>Crucial:</strong> Se a polícia interrompe a perseguição e reinicia horas depois, NÃO há flagrante impróprio.</div>
+      </div>
+
+      <div class="compare-card-full">
+        <div class="lbl" style="color:var(--blue-text)">✔ Presumido / Ficto (art. 302, IV)</div>
+        <div class="prose" style="font-size:13px">Pessoa encontrada, <strong>logo depois do crime</strong>, com instrumentos, armas, objetos ou papéis que façam presumir ser ela o autor. Ex: preso com joias recém-roubadas ou arma usada no crime.</div>
+      </div>
+
+      <div class="block" style="margin-top:10px">
+        <div class="block-title">Flagrantes especiais — os mais cobrados em prova</div>
+        <div class="cmp-ok"><div class="lbl">✔ Esperado — LEGAL</div>A polícia toma conhecimento do crime que vai ocorrer e apenas <strong>aguarda a consumação</strong>, sem induzir ou participar. O crime teria ocorrido de qualquer forma. Ex: monitorar entrega de drogas.</div>
+        <div class="cmp-no"><div class="lbl">✖ Preparado — ILEGAL → CRIME IMPOSSÍVEL</div>Agente policial <strong>induz ou provoca</strong> o agente à prática do crime. Resultado: Crime Impossível (art. 17 CP). Súmula 145 STF: "Não há crime quando a preparação do flagrante pela polícia torna impossível a sua consumação."</div>
+        <div class="cmp-no"><div class="lbl">✖ Forjado — ILEGAL</div>Provas são <strong>plantadas</strong> para incriminar pessoa inocente. Ex: policial que coloca droga no carro de alguém. Não há crime — há crime do policial (abuso de autoridade).</div>
+        <div class="cmp-ok"><div class="lbl">✔ Diferido / Retardado — LEGAL</div>Prisão postergada para identificar mais investigados. Previsto na Lei 12.850/13 e Lei 11.343/06. Exige autorização judicial prévia.</div>
+      </div>
+      <div class="hl hl-red"><strong>Diferença decisiva:</strong> No esperado, o crime ocorreria SEM a polícia. No preparado, o crime só ocorre POR CAUSA da polícia.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">⏰</span><span>Procedimento e prazo de 24h <span class="badge badge-blue">Art. 310 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <div class="block-title">Ordem do procedimento</div>
+        <ul class="list">
+          <li><strong>1.</strong> Oitiva do condutor (quem levou o preso)</li>
+          <li><strong>2.</strong> Oitiva das testemunhas (ao menos 2; se não houver, 2 pessoas que presenciaram a prisão)</li>
+          <li><strong>3.</strong> Interrogatório do conduzido (preso) — tem direito ao silêncio</li>
+          <li><strong>4.</strong> Lavratura do auto de prisão em flagrante (APF)</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-title">Em 24 horas — o que o juiz pode fazer (art. 310)</div>
+        <ul class="list">
+          <li><strong>Relaxar</strong> a prisão ilegal (ex: flagrante forjado, vício no procedimento)</li>
+          <li><strong>Converter</strong> em prisão preventiva (quando presentes os requisitos)</li>
+          <li><strong>Conceder liberdade provisória</strong> com ou sem fiança</li>
+        </ul>
+      </div>
+      <div class="hl hl-blue"><strong>Também em 24h:</strong> família, defensor e MP devem ser comunicados. A nota de culpa deve ser entregue ao preso.</div>
+      <div class="hl hl-red"><strong>Apresentação espontânea:</strong> NÃO gera flagrante. A pessoa que se entrega à autoridade não pode ser autuada em flagrante — pode ser decretada preventiva se houver requisitos.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🔄</span><span>Crime permanente e flagrante <span class="badge badge-blue">Conceito</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">No crime permanente, a consumação se prolonga no tempo. Enquanto a situação antijurídica persistir, o agente está em flagrante — permitindo prisão a qualquer momento, <strong>inclusive à noite em residências</strong> (sem precisar de mandado).</div>
+      <ul class="list">
+        <li>Sequestro e cárcere privado (art. 148 CP)</li>
+        <li>Extorsão mediante sequestro (art. 159 CP)</li>
+        <li>Tráfico de drogas quando o agente guarda ou tem em depósito</li>
+        <li>Porte ilegal de arma de fogo</li>
+      </ul>
+      <div class="hl hl-green"><strong>Prática:</strong> Policial que encontra traficante com drogas em casa pode entrar SEM mandado — crime em flagrante permanente.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== PREVENTIVA ====== -->
+<div id="section-preventiva" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🛡️</span><span>Requisitos da preventiva <span class="badge badge-red">MUITO COBRADO</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">A preventiva é medida cautelar de caráter <strong>excepcional</strong>, decretada pelo juiz a qualquer momento da investigação ou processo, quando as medidas alternativas (art. 319) forem insuficientes.</div>
+      <div class="block">
+        <div class="block-title">Fumus commissi delicti</div>
+        <ul class="list">
+          <li>Prova da existência do crime (materialidade)</li>
+          <li>Indícios suficientes de autoria</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-title">Periculum libertatis — uma das hipóteses do art. 312</div>
+        <div class="grid2">
+          <div class="mini"><div class="lbl">Ordem pública</div>Risco de reiteração criminosa, periculosidade do agente, gravidade em concreto.</div>
+          <div class="mini"><div class="lbl">Ordem econômica</div>Crimes que perturbam a ordem econômica (SFN, lavagem, grandes fraudes).</div>
+          <div class="mini"><div class="lbl">Instrução criminal</div>Ameaças a testemunhas, destruição de provas, intimidação de vítimas.</div>
+          <div class="mini"><div class="lbl">Aplicação da lei penal</div>Risco de fuga: passagem comprada, bens alienados, dupla nacionalidade.</div>
+        </div>
+      </div>
+      <div class="macete">📌 MACETE "POPI"
+P — Prova do crime (materialidade)
+O — Ordem pública / econômica
+P — Perigo da liberdade (periculum)
+I — Indícios de autoria</div>
+      <div class="hl hl-red"><strong>NÃO cabe preventiva:</strong> crimes culposos, contravenções penais, crimes dolosos com pena máx ≤ 4 anos (salvo reincidência em violência doméstica — art. 313, §1º).</div>
+      <div class="hl hl-amber"><strong>Revisão obrigatória a cada 90 dias (Pac Anticrime — Lei 13.964/19):</strong> o juiz DEVE revisar a necessidade. Se não o fizer, a prisão se torna ilegal. MUITO COBRADO.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📋</span><span>Medidas cautelares alternativas <span class="badge badge-blue">Art. 319 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">Antes de decretar a preventiva, o juiz DEVE verificar se as alternativas são suficientes. São 9 medidas:</div>
+      <ul class="list">
+        <li>Comparecimento periódico em juízo para informar atividades</li>
+        <li>Proibição de acesso a determinados lugares</li>
+        <li>Proibição de contato com pessoa determinada (vítima, testemunha, corréu)</li>
+        <li>Proibição de ausentar-se da comarca ou do país</li>
+        <li>Recolhimento domiciliar no período noturno e nos dias de folga</li>
+        <li>Suspensão do exercício de função pública ou atividade econômica</li>
+        <li>Internação provisória (inimputáveis / semi-imputáveis)</li>
+        <li>Fiança</li>
+        <li>Monitoração eletrônica (tornozeleira)</li>
+      </ul>
+      <div class="hl hl-green"><strong>Descumprimento:</strong> O juiz pode substituir, cumular ou decretar a preventiva (art. 282, §4º CPP).</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== TEMPORÁRIA ====== -->
+<div id="section-temporaria" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">⏱️</span><span>Prisão temporária completa <span class="badge badge-red">Lei 7.960/89</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">A prisão temporária serve <strong>exclusivamente para a fase de investigação</strong> (inquérito policial). Não pode ser decretada durante o processo.</div>
+      <div class="block">
+        <div class="block-title">Requisitos (precisa de pelo menos I ou II + obrigatoriamente III)</div>
+        <ul class="list">
+          <li>I — Imprescindível para as investigações do inquérito policial</li>
+          <li>II — Investigado sem residência fixa ou não identificado</li>
+          <li>III — Crime previsto no rol da Lei 7.960/89 (homicídio doloso, sequestro, roubo, extorsão, estupro, tráfico, crimes contra o SFN etc.)</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-title">Prazos</div>
+        <table>
+          <tr><th>Tipo de crime</th><th>Prazo inicial</th><th>Prorrogação</th><th>Total</th></tr>
+          <tr><td>Crimes comuns</td><td>5 dias</td><td>+ 5 dias</td><td>10 dias</td></tr>
+          <tr><td>Hediondos e equiparados</td><td>30 dias</td><td>+ 30 dias</td><td>60 dias</td></tr>
+        </table>
+      </div>
+      <div class="hl hl-red"><strong>Diferença crucial com preventiva:</strong><br>• Temporária = SÓ NO INQUÉRITO, prazo fixo, exige requerimento (delegado ou MP — juiz não pode de ofício)<br>• Preventiva = qualquer fase, sem prazo máximo, pode ser de ofício durante o processo</div>
+      <div class="hl hl-amber"><strong>Término do prazo:</strong> Expirado sem renovação, o preso deve ser imediatamente solto, salvo se decretada preventiva.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== FIANÇA ====== -->
+<div id="section-fianca" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">💰</span><span>Fiança — concessão e cabimento <span class="badge badge-blue">Arts. 322-350</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">Fiança é uma garantia real (dinheiro, bens) prestada pelo acusado para que possa responder ao processo em liberdade. Não é penalidade — é instrumento de liberdade provisória.</div>
+      <div class="grid2">
+        <div class="mini"><div class="lbl">Delegado pode conceder</div>Crimes com pena máxima de até 4 anos. "Fiança na delegacia".</div>
+        <div class="mini"><div class="lbl">Juiz pode conceder</div>Nos demais casos, inclusive quando o delegado se recusar a arbitrar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🚫</span><span>Crimes inafiançáveis <span class="badge badge-red">DECORAR — Art. 5º CF</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">A CF/88 veda a fiança para (art. 5º, XLII, XLIII e XLIV):</div>
+      <div class="macete">🔒 MACETE "RaTo TraTe HeAr"
+Ra  — Racismo (também imprescritível!)
+To  — Tortura
+Tra — Tráfico de drogas
+Te  — Terrorismo
+He  — Crimes Hediondos
+Ar  — Grupos armados contra o Estado</div>
+      <div class="hl hl-red"><strong>Atenção:</strong> Inafiançável NÃO significa prisão obrigatória. Significa que não se pode pagar fiança. Liberdade provisória SEM fiança ainda pode ser concedida.</div>
+      <div class="hl hl-amber"><strong>Racismo:</strong> Além de inafiançável, é imprescritível. Mesma regra para ação de grupos armados contra o Estado (art. 5º, XLIV CF).</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">❌</span><span>Quebra da fiança <span class="badge badge-amber">Consequências</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">A fiança é quebrada quando o acusado:</div>
+      <ul class="list">
+        <li>Foge da comarca ou do país</li>
+        <li>Deixa de comparecer a ato do processo sem motivo justificado</li>
+        <li>Pratica nova infração penal durante o processo</li>
+        <li>Descumpre medida cautelar imposta cumulativamente</li>
+        <li>Resiste ilegalmente a ordem judicial</li>
+      </ul>
+      <div class="hl hl-red"><strong>Consequência:</strong> Metade do valor da fiança é perdida (arts. 343-344 CPP). O réu pode ser preso preventivamente. A outra metade responde pelas custas e despesas processuais.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== CITAÇÃO ====== -->
+<div id="section-citacao" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📬</span><span>Espécies de citação <span class="badge badge-red">MUITO COBRADO</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="prose" style="margin-bottom:8px">Citação é o ato pelo qual o réu é chamado ao processo para se defender. Sem citação válida, o processo é nulo (nulidade absoluta).</div>
+      <table>
+        <tr><th>Espécie</th><th>Quando usar</th><th>Detalhe</th></tr>
+        <tr><td><strong>Mandado</strong></td><td>Réu na mesma comarca</td><td>Oficial de justiça vai pessoalmente até o réu</td></tr>
+        <tr><td><strong>Carta precatória</strong></td><td>Réu em outra comarca no Brasil</td><td>Juízo deprecante solicita ao deprecado</td></tr>
+        <tr><td><strong>Carta rogatória</strong></td><td>Réu no exterior</td><td>Precisa de autorização do STJ para ter valor</td></tr>
+        <tr><td><strong>Edital</strong></td><td>Réu em local incerto</td><td>Prazo 15 dias. Gera suspensão do processo e da prescrição</td></tr>
+        <tr><td><strong>Hora certa</strong></td><td>Réu se oculta para não ser citado</td><td>Oficial vai 2x → suspeita → avisa → 3ª visita cita mesmo sem encontrar</td></tr>
+      </table>
+      <div class="hl hl-red" style="margin-top:8px"><strong>Citação por edital + não comparecimento:</strong> processo fica SUSPENSO. Prescrição também fica suspensa. Pode ser decretada preventiva.</div>
+      <div class="hl hl-amber"><strong>Hora certa:</strong> Se o réu não for encontrado em 2 visitas e houver suspeita de ocultação, o oficial intima qualquer pessoa da casa avisando que voltará em hora determinada. Na 3ª visita, realiza a citação ainda que não encontre o réu.</div>
+      <div class="macete">📌 Comarca → mandado
+Outra comarca → precatória
+Exterior → rogatória
+Desaparecido → edital
+Escondido → hora certa</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== NULIDADES ====== -->
+<div id="section-nulidades" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">⚖️</span><span>Nulidade absoluta x relativa <span class="badge badge-red">MUITO COBRADO</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="duo">
+        <div class="duo-red">
+          <div class="lbl">Nulidade absoluta</div>
+          <ul class="list">
+            <li>Afeta interesse público</li>
+            <li>Prejuízo PRESUMIDO</li>
+            <li>Juiz pode reconhecer de ofício</li>
+            <li>Alegável a qualquer tempo</li>
+            <li>NÃO convalida</li>
+          </ul>
+          <div style="font-size:11px;margin-top:8px;font-weight:600">Ex: falta de defesa técnica, falta de citação, juiz incompetente, sessão do júri com menos de 15 jurados</div>
+        </div>
+        <div class="duo-green">
+          <div class="lbl">Nulidade relativa</div>
+          <ul class="list">
+            <li>Afeta interesse das partes</li>
+            <li>Prejuízo deve ser COMPROVADO</li>
+            <li>Só reconhecida se alegada</li>
+            <li>Deve ser alegada a tempo</li>
+            <li>CONVALIDA se não alegada</li>
+          </ul>
+          <div style="font-size:11px;margin-top:8px;font-weight:600">Ex: erro formal sem prejuízo, advogado não intimado de ato irrelevante</div>
+        </div>
+      </div>
+      <div class="hl hl-red"><strong>Pegadinha clássica:</strong> "Falta de defensor = nulidade relativa?" NÃO! Falta de defesa técnica é nulidade ABSOLUTA.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📐</span><span>Princípios das nulidades <span class="badge badge-blue">4 principais</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="list">
+        <li><strong>Princípio do prejuízo</strong> ("pas de nullité sans grief"): não há nulidade sem prejuízo concreto. Erro puramente formal, sem causar dano, não gera nulidade.</li>
+        <li><strong>Princípio da causalidade</strong>: a nulidade de um ato contamina os atos posteriores que dele dependam. Ex: citação nula invalida todo o processo subsequente.</li>
+        <li><strong>Princípio do interesse</strong>: quem deu causa à nulidade não pode arguí-la. A parte não pode se beneficiar da própria torpeza.</li>
+        <li><strong>Instrumentalidade das formas</strong>: se o ato atingiu sua finalidade, mesmo com vício de forma, não há nulidade. Ex: intimação por telefone que efetivamente chegou ao réu.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🔨</span><span>Nulidades no Tribunal do Júri <span class="badge badge-red">Art. 564 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="list">
+        <li><strong>Menos de 15 jurados</strong> convocados para a sessão (art. 447 CPP): nulidade absoluta</li>
+        <li><strong>Incomunicabilidade violada</strong>: jurados não podem conversar entre si ou com terceiros sobre o caso</li>
+        <li><strong>Falta de quesitos obrigatórios</strong>: Súmula 156 STF — falta de quesito obrigatório = nulidade absoluta</li>
+        <li><strong>Ausência de pronúncia</strong>: o réu só pode ser julgado pelo júri se tiver sido antes pronunciado</li>
+        <li><strong>Falta de defesa</strong>: réu sem advogado no júri = nulidade absoluta</li>
+      </ul>
+      <div class="hl hl-red"><strong>Vedações nos debates (art. 478):</strong> não pode mencionar: decisão de pronúncia como argumento de autoridade, uso de algemas para prejudicar réu, silêncio do acusado, ausência de interrogatório. Violação = nulidade.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== RECURSOS ====== -->
+<div id="section-recursos" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📅</span><span>Prazos dos recursos <span class="badge badge-red">DECORAR</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <table>
+        <tr><th>Recurso</th><th>Interposição</th><th>Razões</th><th>Destino</th></tr>
+        <tr><td>Embargos de declaração</td><td>2 dias</td><td>—</td><td>Mesmo juízo</td></tr>
+        <tr><td>RESE</td><td>5 dias</td><td>2 dias</td><td>Tribunal</td></tr>
+        <tr><td>Apelação criminal</td><td>5 dias</td><td>8 dias</td><td>Tribunal</td></tr>
+        <tr><td>Embargos infringentes</td><td>10 dias</td><td>—</td><td>Mesmo tribunal</td></tr>
+        <tr><td>Agravo em execução</td><td>5 dias</td><td>2 dias</td><td>Tribunal</td></tr>
+        <tr><td>REsp</td><td>15 dias</td><td>—</td><td>STJ</td></tr>
+        <tr><td>RE</td><td>15 dias</td><td>—</td><td>STF</td></tr>
+        <tr><td>Carta testemunhável</td><td>48 horas</td><td>—</td><td>—</td></tr>
+      </table>
+      <div class="hl hl-red"><strong>MP NÃO pode desistir do recurso</strong> (art. 576 CPP). O promotor pode deixar de recorrer, mas, se interpôs, não pode desistir. MUITO COBRADO.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">⚖️</span><span>Reformatio in pejus e efeitos <span class="badge badge-red">IMPORTANTÍSSIMO</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="hl hl-red" style="font-size:15px"><strong>Se SOMENTE o réu recorreu → a pena NÃO pode ser agravada pelo tribunal.</strong><br>(art. 617 CPP — proibição de reformatio in pejus)</div>
+      <div class="prose" style="margin:8px 0">Se o MP também recorreu, o tribunal pode agravar a pena. A proibição só existe quando apenas a defesa recorreu.</div>
+      <div class="block" style="margin-top:10px">
+        <div class="block-title">Efeitos dos recursos</div>
+        <ul class="list">
+          <li><strong>Devolutivo:</strong> devolve a matéria ao tribunal para reapreciação. Todo recurso tem.</li>
+          <li><strong>Suspensivo:</strong> suspende a execução da decisão até o julgamento. Nem todo recurso tem.</li>
+          <li><strong>Regressivo:</strong> permite que o próprio juiz reconsidere sua decisão (ex: RESE contra rejeição de denúncia).</li>
+          <li><strong>Extensivo:</strong> benefício a um corréu se estende aos demais na mesma situação (art. 580 CPP), salvo motivos pessoais.</li>
+        </ul>
+      </div>
+      <div class="hl hl-green"><strong>Fungibilidade:</strong> Recurso interposto errado, por erro escusável (sem má-fé), pode ser recebido como o correto. O juiz converte para o recurso adequado.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📋</span><span>Recursos em espécie — quando cabem <span class="badge badge-blue">Resumo</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <ul class="list">
+        <li><strong>Embargos de declaração:</strong> obscuridade, omissão, contradição ou ambiguidade. Prazo: 2 dias.</li>
+        <li><strong>RESE:</strong> hipóteses taxativas do art. 581 CPP (pronúncia, rejeição de denúncia, fiança, arquivamento etc.).</li>
+        <li><strong>Apelação:</strong> sentença condenatória ou absolutória; decisões definitivas do júri; erro na pena.</li>
+        <li><strong>Embargos infringentes:</strong> decisão NÃO UNÂNIME desfavorável ao réu em tribunal. SÓ a DEFESA pode usar. 10 dias.</li>
+        <li><strong>Agravo em execução:</strong> decisões na execução penal (progressão, remição, falta grave etc.).</li>
+        <li><strong>REsp (STJ):</strong> violação de lei federal (incluindo CPP) ou divergência entre tribunais.</li>
+        <li><strong>RE (STF):</strong> violação direta à Constituição Federal.</li>
+        <li><strong>Habeas corpus:</strong> NÃO é recurso — é ação autônoma. Protege liberdade de locomoção contra ilegalidade ou abuso de poder.</li>
+        <li><strong>Revisão criminal:</strong> NÃO é recurso — é ação autônoma para desconstituir condenação transitada em julgado. SÓ a favor do réu.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== JÚRI ====== -->
+<div id="section-juri" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">🔨</span><span>Debates e vedações no júri <span class="badge badge-red">Art. 478 CPP</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <div class="block-title">O que é vedado nos debates — MUITO COBRADO</div>
+        <ul class="list">
+          <li>Mencionar a decisão de pronúncia como argumento de autoridade ("se foi pronunciado, já é quase culpado")</li>
+          <li>Fazer referência ao uso de algemas como argumento de culpabilidade ou periculosidade</li>
+          <li>Apontar o silêncio do acusado como indício de culpa</li>
+          <li>Mencionar a ausência de interrogatório como elemento desfavorável</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-title">Regra dos 3 dias úteis</div>
+        <div class="prose">Documentos, objetos e provas devem ser juntados ao processo com antecedência mínima de <strong>3 dias úteis</strong> antes da sessão do júri. Prova juntada de surpresa pode ser declarada nula.</div>
+      </div>
+      <div class="hl hl-green"><strong>Jurados podem:</strong> pedir acesso aos autos, solicitar esclarecimentos durante os debates, pedir localização de prova citada.</div>
+      <div class="hl hl-amber"><strong>Apelação no júri:</strong> cabe quando a decisão dos jurados for manifestamente contrária à prova dos autos (art. 593, III, d). Precisa haver manifesta contrariedade — não é qualquer discordância.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ====== SENTENÇA ====== -->
+<div id="section-sentenca" class="section">
+
+  <div class="card">
+    <div class="card-header" onclick="toggle(this)">
+      <div class="card-title"><span class="card-icon">📄</span><span>Estrutura e princípios da sentença <span class="badge badge-blue">Arts. 381-397</span></span></div>
+      <span class="chevron">▾</span>
+    </div>
+    <div class="card-body">
+      <div class="block">
+        <div class="block-title">Partes obrigatórias</div>
+        <ul class="list">
+          <li><strong>Relatório:</strong> exposição concisa do caso — qualificação do acusado, síntese da denúncia, provas. Dispensado no júri.</li>
+          <li><strong>Fundamentação (motivação):</strong> análise das provas, enfrentamento das teses, raciocínio jurídico. Sentença sem fundamentação é NULA (art. 93, IX CF).</li>
+          <li><strong>Dispositivo:</strong> conclusão — condenação ou absolvição, dosimetria da pena, regime inicial, substituições, efeitos da condenação.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <div class="block-title">Princípio da correlação (congruência)</div>
+        <div class="prose" style="margin-bottom:8px">O juiz só pode julgar os fatos narrados na denúncia ou queixa.</div>
+        <div class="grid2">
+          <div class="mini"><div class="lbl">Ultra petita</div>Juiz vai além do pedido — condena por crime mais grave sem mutatio.</div>
+          <div class="mini"><div class="lbl">Extra petita</div>Juiz julga fato diferente do pedido.</div>
+          <div class="mini"><div class="lbl">Citra petita</div>Juiz deixa de apreciar pedido (julga menos).</div>
+        </div>
+      </div>
+      <div class="block">
+        <div class="block-title">Emendatio libelli (art. 383 CPP)</div>
+        <div class="prose" style="margin-bottom:8px">O juiz pode dar ao fato <strong>definição jurídica diferente</strong> da que consta da denúncia, ainda que aplique pena mais grave. Os FATOS permanecem os mesmos — só a tipificação muda. Não precisa de nova manifestação do MP.</div>
+        <div class="hl hl-amber"><strong>Ex:</strong> MP denuncia por furto (art. 155 CP), mas o juiz percebe que houve violência e condena por roubo (art. 157 CP), sem alterar os fatos descritos.</div>
+      </div>
+      <div class="block">
+        <div class="block-title">Mutatio libelli (art. 384 CPP) — diferença crucial</div>
+        <div class="prose" style="margin-bottom:8px">Surge durante a instrução <strong>fato novo</strong> não descrito na denúncia. O juiz não pode condenar por fato diferente — abre vista ao MP para aditamento. Se o MP aditar, o réu se defende do novo fato.</div>
+        <div class="hl hl-red"><strong>Emendatio x Mutatio:</strong><br>Emendatio = mesmos fatos, nova tipificação → juiz faz sozinho.<br>Mutatio = fato novo surgido na instrução → exige aditamento do MP.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /content -->
+
+<script>
+function toggle(header){
+  const body=header.nextElementSibling;
+  const chev=header.querySelector('.chevron');
+  const open=body.classList.toggle('open');
+  chev.classList.toggle('open',open);
+}
+
+function setTab(id,btn){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  const sec=document.getElementById('section-'+id);
+  if(sec) sec.classList.add('active');
+  btn.classList.add('active');
+  document.getElementById('searchResults').style.display='none';
+  window.scrollTo(0,0);
+}
+
+function filterCards(q){
+  const sr=document.getElementById('searchResults');
+  if(!q.trim()){
+    sr.style.display='none';
+    const activeTab=document.querySelector('.tab.active');
+    const match=activeTab&&activeTab.getAttribute('onclick').match(/setTab\('(\w+)'/);
+    if(match) document.getElementById('section-'+match[1]).classList.add('active');
+    return;
+  }
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  const cards=document.querySelectorAll('.section .card');
+  const results=[];
+  cards.forEach(c=>{
+    if(c.textContent.toLowerCase().includes(q.toLowerCase())){
+      const clone=c.cloneNode(true);
+      clone.querySelector('.card-header').addEventListener('click',function(){toggle(this);});
+      results.push(clone);
+    }
+  });
+  sr.innerHTML='';
+  if(results.length===0){
+    sr.innerHTML='<div class="no-results">Nenhum resultado encontrado.</div>';
+  } else {
+    results.forEach(r=>sr.appendChild(r));
+  }
+  sr.style.display='block';
+}
+</script>
+</body>
+</html>
